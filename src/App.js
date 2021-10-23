@@ -1,16 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
 import Grandfather from './Components/Grandfather/Grandfather';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 
+export const RingContext=createContext('ring')
 function App() {
   const [house,setHouse]=useState(1);
-  const ornaments='diamond ring'; 
+  const ornaments='diamondopopo ring'; 
   return (
-    <div className="App">
+  <RingContext.Provider value={ornaments}>
+      <div className="App">
       <button onClick={()=>setHouse(house+1)}>Buy a new house</button>
-     <Grandfather house={house}ornaments={ornaments}></Grandfather>
+     <Grandfather house={house}></Grandfather>
     </div>
+  </RingContext.Provider>
   );
 }
 
